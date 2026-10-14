@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>SynaptoFit — the fitness tracker that works without signal</title>
+<meta name="description" content="SynaptoFit is an offline-first fitness and gym tracker. Log workouts, nutrition, body composition and water on your phone — with or without a connection. Free core, no ads, no data selling.">
+<meta name="robots" content="index,follow">
+<meta property="og:title" content="SynaptoFit — the fitness tracker that works without signal">
+<meta property="og:description" content="Offline-first workout, nutrition and body tracking. Free core, no ads, no tracking.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://synaptofit.com/">
+<meta property="og:image" content="https://synaptofit.com/logo-512.png">
+<meta name="theme-color" content="#0A0A0A">
+<link rel="icon" href="/logo.png">
+<link rel="apple-touch-icon" href="/logo-512.png">
+<style>
+:root{
+  --gold:#D4AF37; --gold-dim:#9c7f28;
+  --bg:#0A0A0A; --bg-2:#121212; --bg-3:#181818;
+  --ink:#f2f2f2; --muted:#9a9a9a; --line:#262626;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0; background:var(--bg); color:var(--ink);
+  font:16px/1.65 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+  -webkit-font-smoothing:antialiased;
+}
+.wrap{max-width:1040px;margin:0 auto;padding:0 24px}
+a{color:var(--gold)}
+
+/* header */
+header{position:sticky;top:0;z-index:10;background:rgba(10,10,10,.88);
+  backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+.bar{display:flex;align-items:center;justify-content:space-between;height:66px}
+.brand{display:flex;align-items:center;gap:10px;text-decoration:none;color:var(--ink);
+  font-weight:700;font-size:19px;letter-spacing:.01em}
+.brand span{color:var(--gold)}
+.brand img{width:26px;height:26px;display:block}
+nav.top a{color:var(--muted);text-decoration:none;margin-left:26px;font-size:14.5px}
+nav.top a:hover{color:var(--ink)}
+@media(max-width:720px){nav.top a{margin-left:16px;font-size:13.5px}
+  nav.top a.hide-sm{display:none}}
+
+/* hero */
+.hero{padding:86px 0 70px;border-bottom:1px solid var(--line);
+  background:radial-gradient(900px 420px at 50% -10%,rgba(212,175,55,.10),transparent 70%)}
+.hero h1{font-size:46px;line-height:1.12;margin:0 0 18px;letter-spacing:-.02em;max-width:17ch}
+.hero h1 em{font-style:normal;color:var(--gold)}
+.hero p.lead{font-size:19px;color:#cfcfcf;max-width:60ch;margin:0 0 14px}
+.hero p.sub{color:var(--muted);max-width:58ch;margin:0 0 30px;font-size:15.5px}
+.cta{display:flex;gap:14px;flex-wrap:wrap;align-items:center}
+.btn{display:inline-block;padding:13px 24px;border-radius:8px;text-decoration:none;
+  font-weight:600;font-size:15.5px}
+.btn-primary{background:var(--gold);color:#0A0A0A}
+.btn-primary:hover{background:#e3c04a}
+.btn-ghost{border:1px solid var(--line);color:var(--ink)}
+.btn-ghost:hover{border-color:var(--gold)}
+.badge{display:inline-block;font-size:12.5px;letter-spacing:.09em;text-transform:uppercase;
+  color:var(--gold);border:1px solid var(--gold-dim);border-radius:100px;padding:5px 13px;margin-bottom:22px}
+@media(max-width:720px){.hero{padding:56px 0 48px}.hero h1{font-size:33px}.hero p.lead{font-size:17px}}
+
+/* sections */
+section{padding:72px 0;border-bottom:1px solid var(--line)}
+h2{font-size:29px;margin:0 0 14px;letter-spacing:-.01em}
+.section-intro{color:var(--muted);max-width:62ch;margin:0 0 40px;font-size:16.5px}
+@media(max-width:720px){section{padding:52px 0}h2{font-size:24px}}
+
+/* pillar */
+.pillar{display:grid;grid-template-columns:1.05fr .95fr;gap:52px;align-items:center}
+@media(max-width:860px){.pillar{grid-template-columns:1fr;gap:30px}}
+.pillar ul{margin:18px 0 0;padding-left:20px;color:#cfcfcf}
+.pillar li{margin-bottom:11px}
+.panel{background:var(--bg-2);border:1px solid var(--line);border-radius:12px;padding:26px 28px}
+.panel h3{margin:0 0 14px;font-size:16px;color:var(--gold);letter-spacing:.04em;text-transform:uppercase}
+.kv{display:flex;justify-content:space-between;gap:16px;padding:11px 0;border-bottom:1px solid var(--line);font-size:15px}
+.kv:last-child{border-bottom:0}
+.kv span:last-child{color:var(--muted);text-align:right}
+
+/* features */
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+@media(max-width:900px){.grid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:620px){.grid{grid-template-columns:1fr}}
+.card{background:var(--bg-2);border:1px solid var(--line);border-radius:12px;padding:24px 24px 22px}
+.card:hover{border-color:#3a3217}
+.card .ic{width:34px;height:34px;color:var(--gold);margin-bottom:14px}
+.card h3{margin:0 0 8px;font-size:17px}
+.card p{margin:0;color:var(--muted);font-size:14.8px;line-height:1.6}
+
+/* promise */
+.promise{background:var(--bg-2);border:1px solid var(--line);border-left:3px solid var(--gold);
+  border-radius:0 12px 12px 0;padding:30px 34px;max-width:70ch}
+.promise h2{font-size:23px;margin-bottom:12px}
+.promise p{color:#cfcfcf;margin:0 0 12px}
+.promise p:last-child{margin-bottom:0}
+
+/* legal cards */
+.legal-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+@media(max-width:800px){.legal-grid{grid-template-columns:1fr}}
+.legal-card{display:block;background:var(--bg-2);border:1px solid var(--line);border-radius:12px;
+  padding:22px 24px;text-decoration:none;color:var(--ink)}
+.legal-card:hover{border-color:var(--gold)}
+.legal-card b{display:block;font-size:16.5px;margin-bottom:6px}
+.legal-card span{color:var(--muted);font-size:14.3px;line-height:1.55;display:block}
+
+/* footer */
+footer{padding:46px 0 60px;color:var(--muted);font-size:14px}
+footer a{color:var(--muted)}
+footer a:hover{color:var(--gold)}
+.foot-grid{display:flex;justify-content:space-between;gap:34px;flex-wrap:wrap;margin-bottom:28px}
+.foot-grid h4{color:var(--ink);font-size:14px;margin:0 0 10px;letter-spacing:.04em;text-transform:uppercase}
+.foot-grid p{margin:0 0 6px;line-height:1.6}
+.foot-links a{display:block;margin-bottom:7px;text-decoration:none}
+.fine{border-top:1px solid var(--line);padding-top:20px;font-size:13.2px;line-height:1.7}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap bar">
+    <a class="brand" href="/">
+      <img src="/logo.png" alt="" width="26" height="26">
+      Synapto<span>Fit</span>
+    </a>
+    <nav class="top">
+      <a href="#features">Features</a>
+      <a href="#offline" class="hide-sm">Offline</a>
+      <a href="#beta">Beta</a>
+      <a href="/legal/">Legal</a>
+    </nav>
+  </div>
+</header>
+
+<div class="hero">
+  <div class="wrap">
+    <div class="badge">Currently in beta</div>
+    <h1>The fitness tracker that works <em>without signal</em>.</h1>
+    <p class="lead">Log a workout in a basement gym. Scan a barcode on a train. Check your progress on a plane. SynaptoFit runs entirely on your phone — the internet is optional.</p>
+    <p class="sub">Workouts, nutrition, body composition and water, in one app. No ads, no analytics, no selling your data.</p>
+    <div class="cta">
+      <a class="btn btn-primary" href="#beta">Join the beta</a>
+      <a class="btn btn-ghost" href="#features">See what it does</a>
+    </div>
+  </div>
+</div>
+
+<section id="offline">
+  <div class="wrap pillar">
+    <div>
+      <h2>Built offline-first, not offline-tolerant</h2>
+      <p class="section-intro" style="margin-bottom:0">Most tracking apps are a website in a wrapper — lose signal and you lose the app. SynaptoFit stores everything in a database on your phone and treats the server as a backup, not a dependency.</p>
+      <ul>
+        <li>Every screen reads and writes locally, instantly</li>
+        <li>Your graphs and totals are calculated on the device</li>
+        <li>Changes sync in the background when signal returns</li>
+        <li>Nothing you log can be lost to a failed request</li>
+      </ul>
+    </div>
+    <div class="panel">
+      <h3>At a glance</h3>
+      <div class="kv"><span>Exercise library</span><span>264 exercises</span></div>
+      <div class="kv"><span>Muscle tagging</span><span>22 muscle groups</span></div>
+      <div class="kv"><span>Macros tracked</span><span>All 8</span></div>
+      <div class="kv"><span>Works offline</span><span>Every screen</span></div>
+      <div class="kv"><span>Ads &amp; trackers</span><span>None</span></div>
+      <div class="kv"><span>Core features</span><span>Free</span></div>
+    </div>
+  </div>
+</section>
+
+<section id="features">
+  <div class="wrap">
+    <h2>What's in it</h2>
+    <p class="section-intro">Everything below is built and running in the current beta.</p>
+    <div class="grid">
+
+      <div class="card">
+        <svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M4 9v6M20 9v6M7 7v10M17 7v10M7 12h10"/></svg>
+        <h3>Workout logging</h3>
+        <p>264 exercises or your own. Sets, reps, weight, RPE, rest and tempo. Cardio with time, distance and heart rate. Save and reuse presets.</p>
+      </div>
+
+      <div class="card">
+        <svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M7 8v8M10 8v8M14 8v8M17 8v8"/></svg>
+        <h3>Nutrition &amp; barcodes</h3>
+        <p>Scan a barcode or search by name. All eight macros — calories, protein, carbs, fat, fibre, sugar, salt and saturated fat. Meal sections you control.</p>
+      </div>
+
+      <div class="card">
+        <svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M3 17l5-5 4 3 5-7 4 4"/><circle cx="8" cy="12" r="1"/></svg>
+        <h3>Body &amp; composition</h3>
+        <p>Weight, body fat, custom measurements and progress photos, with trend graphs over any range you choose.</p>
+      </div>
+
+      <div class="card">
+        <svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M12 3s6 6.4 6 10.2A6 6 0 0 1 6 13.2C6 9.4 12 3 12 3z"/></svg>
+        <h3>Water tracking</h3>
+        <p>Quick-add in one tap, with a jug on your dashboard whose water actually tilts as you move the phone. Small thing. Oddly satisfying.</p>
+      </div>
+
+      <div class="card">
+        <svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M4 20V10M10 20V4M16 20v-8M22 20v-5"/></svg>
+        <h3>Targets &amp; streaks</h3>
+        <p>Set a target for any metric and watch the line on the graph. Logging streaks, milestones, and a bit of confetti when you earn it.</p>
+      </div>
+
+      <div class="card">
+        <svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M12 3l8 4v5c0 5-3.4 8-8 9-4.6-1-8-4-8-9V7z"/><path d="M12 9v4M12 16h.01"/></svg>
+        <h3>Safety checks</h3>
+        <p>Set a target that's genuinely risky and the app says so — with the research behind it. It warns, it never blocks. Your body, your call.</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="promise">
+      <h2>The free core promise</h2>
+      <p>Logging your workouts, food, body and water is <strong>free</strong>, and it isn't crippled — no capped entries, no locked history, no watching an advert to save a set.</p>
+      <p>Optional paid features may arrive later for people who want automated goal-setting or deeper analysis. The core stays free.</p>
+      <p>No ads. No third-party analytics. Your data is never sold. <a href="/legal/privacy.html">Read the privacy policy</a> — it's written to be read, not to be skipped.</p>
+    </div>
+  </div>
+</section>
+
+<section id="beta">
+  <div class="wrap">
+    <h2>Join the beta</h2>
+    <p class="section-intro">SynaptoFit is in active beta on iOS via TestFlight, with Android on the way. Testers get it free and their feedback genuinely shapes what gets built next — most of what's listed above came from tester requests.</p>
+    <div class="cta">
+      <a class="btn btn-primary" href="mailto:support@synaptofit.com?subject=SynaptoFit%20beta%20access">Request an invite</a>
+      <a class="btn btn-ghost" href="mailto:support@synaptofit.com">Ask a question</a>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <h2>Legal</h2>
+    <p class="section-intro">SynaptoFit handles health data, so these are written plainly rather than hidden behind jargon.</p>
+    <div class="legal-grid">
+      <a class="legal-card" href="/legal/privacy.html">
+        <b>Privacy Policy</b>
+        <span>What's collected, why, where it's stored, and the rights you have over it.</span>
+      </a>
+      <a class="legal-card" href="/legal/terms.html">
+        <b>Terms of Service</b>
+        <span>The agreement between you and SynaptoFit, including the free core promise.</span>
+      </a>
+      <a class="legal-card" href="/legal/disclaimer.html">
+        <b>Health Disclaimer</b>
+        <span>SynaptoFit is a tracking tool, not a medical device, and gives no medical advice.</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div>
+        <h4>SynaptoFit</h4>
+        <p>Offline-first fitness tracking.</p>
+        <p>Built in the UK.</p>
+      </div>
+      <div class="foot-links">
+        <h4>Product</h4>
+        <a href="#features">Features</a>
+        <a href="#offline">How it works</a>
+        <a href="#beta">Join the beta</a>
+      </div>
+      <div class="foot-links">
+        <h4>Legal</h4>
+        <a href="/legal/privacy.html">Privacy Policy</a>
+        <a href="/legal/terms.html">Terms of Service</a>
+        <a href="/legal/disclaimer.html">Health Disclaimer</a>
+      </div>
+      <div class="foot-links">
+        <h4>Contact</h4>
+        <a href="mailto:support@synaptofit.com">support@synaptofit.com</a>
+        <a href="mailto:privacy@synaptofit.com">privacy@synaptofit.com</a>
+      </div>
+    </div>
+    <div class="fine">
+      SynaptoFit is operated by Connor Trimble, a sole trader based in the United Kingdom.<br>
+      Address for service: 92 Exton Road, Chichester PO19 8BT, United Kingdom.<br>
+      &copy; 2026 SynaptoFit. Apple and App Store are trademarks of Apple Inc. Google Play is a trademark of Google LLC.
+      Nutrition data from <a href="https://openfoodfacts.org">Open Food Facts</a>.
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
