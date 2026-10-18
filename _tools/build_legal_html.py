@@ -6,7 +6,7 @@ Re-run after editing CONTENT below; re-upload the changed files."""
 import re, html, os
 
 VERSION = "2.0"
-UPDATED = "14 October 2026"
+UPDATED = "18 October 2026"
 
 # Path the pages are served under. "" = site root, "/legal" = synaptofit.com/legal/...
 BASE = "/legal"
@@ -156,7 +156,8 @@ PRIVACY = [
        'Nutrition: foods logged, meals, macro totals; meal presets and custom meal sections',
        'Body: weight entries, body measurements, body-composition metrics (e.g. body fat %), water intake',
        'Progress photos, if you choose to take or upload them',
-       'Targets you set, logging streaks, and preferences (units, theme, tracked measurements)']),
+       'Targets you set, logging streaks, and preferences (units, theme, tracked measurements)',
+       'A record of each safety warning the app shows you and whether you tapped "I understand" (the target, the warning, the app version and the time)']),
 ('h3','3.4 Technical data'),
 ('ul',['Authentication tokens to keep you signed in; basic server logs (e.g. request timestamps and IP addresses) generated in operating the service and used only for security and troubleshooting']),
 ('p','We do **not** collect your precise location, contacts, advertising identifiers, or any data from other apps. The app requests camera and photo-library permission only for the barcode scanner and progress photos, and the accelerometer is used only to animate the on-screen water jug — motion data never leaves your device.'),
@@ -168,6 +169,7 @@ PRIVACY = [
  ['Creating and operating your account; syncing and restoring your logged data','Account data; all logged data','Contract (Art. 6(1)(b)); explicit consent for health data (Art. 9(2)(a))'],
  ['Showing your own trends, targets, streaks and dashboards','Logged data (processed largely on your device)','Contract; explicit consent for health data'],
  ['Safety warnings when a target looks risky (e.g. calorie floors, unsafe weight-loss rates), personalised via an estimate of your energy needs','Profile data + latest weight + the target you set','Explicit consent (Art. 9(2)(a))'],
+ ['Keeping a record of each safety warning shown to you and whether you acknowledged it','The target, the warning, the app version and the time','Explicit consent (Art. 9(2)(a))'],
  ['Food search and barcode lookup','The search text or barcode only — sent without your name, email or any account identifier','Contract'],
  ['Service emails (e.g. password reset)','Email address','Contract'],
  ['Security, abuse prevention, troubleshooting','Technical data','Legitimate interests (Art. 6(1)(f))'],
@@ -190,6 +192,7 @@ PRIVACY = [
 ('h2','9. How long we keep data'),
 ('ul',['Account and logged data: for as long as your account exists.',
        'Account deletion: deleting your account in the app (Profile → Delete account) **permanently and irreversibly deletes all your data** from the live database, including progress photos. Residual copies in server backups are overwritten within 30 days.',
+       'Safety-warning records: kept for as long as your account exists, never edited, and deleted with your account.',
        'Server logs: kept for a short rolling period for security, then deleted.',
        'Emails to support/privacy: kept as long as needed to handle your request and for a reasonable record thereafter.']),
 ('h2','10. Security'),
