@@ -12,6 +12,8 @@
 :root{--gold:#D4AF37;--gold-dim:#9c7f28;--ink:#f2f2f2;--muted:#9a9a9a;--line:#262626;
  --bg:#0A0A0A;--bg-2:#121212;--soft:#161616}
 *{box-sizing:border-box}
+/* always reserve the scrollbar, so short pages (Overview) line up with long ones */
+html{overflow-y:scroll}
 body{margin:0;background:var(--bg);color:var(--ink);
  font:16px/1.7 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
  -webkit-text-size-adjust:100%;-webkit-font-smoothing:antialiased}
