@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """Builds the public legal pages for synaptofit.com from a single source of truth.
-Emits: index.html, privacy.html, terms.html, disclaimer.html
+Emits: index.html, privacy.html, terms.html, disclaimer.html, delete-account.html
 Re-run after editing CONTENT below; re-upload the changed files."""
 
 import re, html, os
@@ -90,7 +90,8 @@ def render(blocks):
 def page(slug, title, subtitle, blocks, desc):
     nav = '<a href="/">Home</a>'
     for s, label in [("index", "Legal"), ("privacy", "Privacy Policy"),
-                     ("terms", "Terms of Service"), ("disclaimer", "Health Disclaimer")]:
+                     ("terms", "Terms of Service"), ("disclaimer", "Health Disclaimer"),
+                     ("delete-account", "Delete Account")]:
         cur = ' aria-current="page"' if s == slug else ''
         href = f"{BASE}/" if s == "index" else f"{BASE}/{s}.html"
         nav += f'<a href="{href}"{cur}>{label}</a>'
@@ -320,12 +321,44 @@ DISCLAIMER = [
 ('p',f'This disclaimer forms part of the [[SynaptoFit Terms of Service|{BASE}/terms.html]] (section 8). By using the App you accept it.'),
 ]
 
+# ---------------------------------------------------------------- DELETE ACCOUNT
+# The account-deletion page Google Play's Data safety form links to. It must work for
+# someone who no longer has the app, and it must match Privacy Policy §9 and §11.
+DELETE_ACCOUNT = [
+('note',["You can delete your SynaptoFit account at any time, free of charge. Deleting it "
+         "permanently erases your account and everything you have logged. It cannot be undone."]),
+('h2','1. Delete it in the app (quickest)'),
+('ul',['Open SynaptoFit and sign in.',
+       'Go to **Profile → Delete account**.',
+       'Confirm. Your account and data are deleted from our server straight away, and the app also clears your data from that phone.']),
+('p','You need an internet connection for this, because the deletion happens on our server.'),
+('h2',"2. Delete it without the app"),
+('p',"If you have uninstalled SynaptoFit, changed phone, or can't sign in, email **privacy@synaptofit.com** with the subject **Delete my account**."),
+('ul',['Send it from the email address on your SynaptoFit account, so we can confirm the account is yours. If you no longer have access to that address, say so and we will agree another way to check.',
+       'We will delete your account and confirm by email. We respond within one month, and normally much sooner.']),
+('p','Uninstalling the app does **not** delete your account. Your data stays on our server until you delete the account using one of the two methods above.'),
+('h2','3. What is deleted'),
+('ul',['Your account: name, email address and password',
+       'Your profile and onboarding answers',
+       'Everything you have logged: workouts, custom exercises and presets, nutrition and meal presets, weight, measurements, body composition, water, targets and streaks',
+       'Your progress photos, including the image files themselves',
+       'Your consent records and the record of safety warnings shown to you']),
+('h2','4. What is kept, and for how long'),
+('ul',['**Server backups:** any residual copies are overwritten within **30 days**.',
+       '**Emails you sent us** (for example to support or privacy) are kept only as long as needed to deal with your request, and for a reasonable record afterwards.',
+       '**Server logs** are kept for a short rolling period for security, then deleted.']),
+('p',f'Nothing else is kept. Full details are in our [[Privacy Policy|{BASE}/privacy.html]] (sections 9 and 11).'),
+('h2','5. Deleting only some of your data'),
+('p','You do not have to delete your whole account to remove something. Individual entries, such as a workout, a meal, a weigh-in or a progress photo, can be deleted in the app at any time. For anything you cannot delete yourself, email **privacy@synaptofit.com**.'),
+]
+
 INDEX = [
 ('p','Legal documents for the SynaptoFit fitness tracking app.'),
 ('raw',f'''<div class="cards">
 <a class="card" href="{BASE}/privacy.html"><b>Privacy Policy</b><span>What data we collect, why, and the rights you have over it. Covers health data and explicit consent.</span></a>
 <a class="card" href="{BASE}/terms.html"><b>Terms of Service &amp; EULA</b><span>The agreement between you and SynaptoFit, including the licence, the free core promise, and liability.</span></a>
 <a class="card" href="{BASE}/disclaimer.html"><b>Health &amp; Fitness Disclaimer</b><span>What the app is not: it is a tracking tool, not a medical device, and gives no medical advice.</span></a>
+<a class="card" href="{BASE}/delete-account.html"><b>Delete your account</b><span>How to permanently delete your SynaptoFit account and data, in the app or by email.</span></a>
 </div>'''),
 ('h2','Contact'),
 ('p','Privacy and data protection enquiries: **privacy@synaptofit.com**<br>Everything else: **support@synaptofit.com**'),
@@ -349,3 +382,5 @@ if __name__ == "__main__":
          "The terms governing your use of the SynaptoFit app, including licence, liability and the health disclaimer.")
     page("disclaimer","Health & Fitness Disclaimer", f"Version {VERSION} · Last updated {UPDATED}", DISCLAIMER,
          "SynaptoFit is a tracking tool, not a medical device, and provides no medical advice.")
+    page("delete-account","Delete your SynaptoFit account", "How to delete your account and data · Last updated 31 October 2026", DELETE_ACCOUNT,
+         "How to permanently delete your SynaptoFit account and all of your data, in the app or by email.")
