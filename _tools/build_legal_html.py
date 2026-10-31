@@ -44,10 +44,8 @@ nav.top a:hover,nav.top a[aria-current]{color:var(--ink)}
 .tabs a:hover{color:var(--ink)}
 .tabs a[aria-current]{color:var(--ink);border-bottom-color:var(--gold)}
 @media(max-width:720px){.tabs .wrap{gap:0 16px}.tabs a{font-size:13.5px;padding-bottom:8px}}
-/* document: the frame is full width, the reading text keeps a comfortable line length */
+/* document: full homepage width, edge to edge like the homepage sections */
 main{padding:40px 0 64px}
-main .wrap>*{max-width:760px}
-main .wrap>table,main .wrap>.cards{max-width:none}
 h1{font-size:34px;line-height:1.2;margin:0 0 6px;letter-spacing:-.015em}
 .sub{color:var(--muted);font-size:14px;margin:0 0 30px}
 h2{font-size:21px;margin:40px 0 12px;padding-top:16px;border-top:1px solid var(--line)}
