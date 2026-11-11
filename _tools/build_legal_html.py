@@ -151,16 +151,19 @@ def page(slug, title, subtitle, blocks, desc, head_title=None):
 <meta property="og:description" content="{html.escape(desc)}">
 <meta property="og:type" content="website">
 <meta property="og:url" content="{url}">
-<meta property="og:image" content="{SITE}/logo-512.png">
-<meta property="og:image:alt" content="The SynaptoFit logo">
-<meta name="twitter:card" content="summary">
-<link rel="icon" href="/logo.png">
+<meta property="og:image" content="{SITE}/share-card.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="SynaptoFit — the fitness tracker that works without signal">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="icon" href="/logo.png" type="image/png">
 <meta name="theme-color" content="#0A0A0A">
 <style>{CSS}</style>
 </head>
 <body>
 <header><div class="wrap bar">
-<a class="brand" href="/"><img src="/logo.png" alt="" width="26" height="26"><b>Synapto<span>Fit</span></b></a>
+<a class="brand" href="/"><img src="/logo-52.png" alt="" width="26" height="26"><b>Synapto<span>Fit</span></b></a>
 <nav class="top"><a href="/#features">Features</a><a href="/#offline" class="hide-sm">Offline</a><a href="/#beta">Beta</a><a href="{BASE}/" aria-current="page">Legal</a></nav>
 </div></header>
 <div class="tabs"><div class="wrap">{tabs}</div></div>
