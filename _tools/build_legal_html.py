@@ -6,7 +6,7 @@ Re-run after editing CONTENT below; re-upload the changed files."""
 import re, html, os
 
 VERSION = "2.0"
-UPDATED = "18 October 2026"
+UPDATED = "11 November 2026"
 
 # Path the pages are served under. "" = site root, "/legal" = synaptofit.com/legal/...
 BASE = "/legal"
@@ -189,10 +189,11 @@ PRIVACY = [
        'Body: weight entries, body measurements, body-composition metrics (e.g. body fat %), water intake',
        'Progress photos, if you choose to take or upload them',
        'Targets you set, logging streaks, and preferences (units, theme, tracked measurements)',
-       'A record of each safety warning the app shows you and whether you tapped "I understand" (the target, the warning, the app version and the time)']),
+       'A record of each safety warning the app shows you and whether you tapped "I understand" (the target, the warning, the app version and the time)',
+       'Workout history you choose to import from another app (for example Strong, Hevy, FitNotes or Fitbod) or a spreadsheet. The file is read on your phone. Only the workouts in it are saved to your account, labelled with the app they came from so the import can be undone; the file itself is never uploaded']),
 ('h3','3.4 Technical data'),
 ('ul',['Authentication tokens to keep you signed in; basic server logs (e.g. request timestamps and IP addresses) generated in operating the service and used only for security and troubleshooting']),
-('p','We do **not** collect your precise location, contacts, advertising identifiers, or any data from other apps. The app requests camera and photo-library permission only for the barcode scanner and progress photos, and the accelerometer is used only to animate the on-screen water jug — motion data never leaves your device.'),
+('p','We do **not** collect your precise location, contacts, advertising identifiers, or any data from other apps unless you choose to import it (section 3.3). The app requests camera and photo-library permission only for the barcode scanner and progress photos, and the accelerometer is used only to animate the on-screen water jug — motion data never leaves your device.'),
 ('h2','4. Special category (health) data and your explicit consent'),
 ('p','Most data listed in 3.2 and 3.3 is "data concerning health" under Article 9 GDPR. We process it on the basis of your **explicit consent** (Article 9(2)(a)), which we ask for in a dedicated, separate step during onboarding — not buried in the Terms of Service.'),
 ('p','You may withdraw consent at any time in the app or by emailing privacy@synaptofit.com. Because the entire service consists of recording and analysing this data, withdrawing consent means we can no longer provide the service; you may then export your data (on request) and delete your account.'),
