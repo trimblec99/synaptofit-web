@@ -1,0 +1,5 @@
+# GitHub Pages skips folders that start with a dot. This publishes the one we
+# need: /.well-known/security.txt (N35g). Nothing else here, and never add a
+# .nojekyll file instead (it would publish _tools/ too).
+include:
+  - .well-known

@@ -74,7 +74,7 @@ footer{border-top:1px solid var(--line);padding:46px 0 60px;color:var(--muted);f
 footer a{color:var(--muted)}
 footer a:hover{color:var(--gold)}
 .foot-grid{display:flex;justify-content:space-between;gap:34px;flex-wrap:wrap;margin-bottom:28px}
-.foot-grid h4{color:var(--ink);font-size:14px;margin:0 0 10px;letter-spacing:.04em;text-transform:uppercase}
+.foot-grid .foot-h{color:var(--ink);font-size:14px;margin:0 0 10px;letter-spacing:.04em;text-transform:uppercase}
 .foot-grid p{margin:0 0 6px;line-height:1.6}
 .foot-links a{display:block;margin-bottom:7px;text-decoration:none}
 .fine{border-top:1px solid var(--line);padding-top:20px;font-size:13.2px;line-height:1.7}
@@ -113,7 +113,23 @@ def render(blocks):
         elif kind == 'raw': out.append(val)
     return "\n".join(out)
 
-def page(slug, title, subtitle, blocks, desc):
+SITE = "https://synaptofit.com"
+
+# N35g (11 Nov): the same two security tags as the homepage. The pages have no
+# scripts, so script loading is simply switched off; styles are inline (<style>).
+HEAD_SECURITY = (
+    '<meta http-equiv="Content-Security-Policy" content="default-src \'none\'; '
+    'style-src \'unsafe-inline\'; img-src \'self\'; base-uri \'none\'; '
+    'form-action \'none\'; upgrade-insecure-requests">\n'
+    '<meta name="referrer" content="same-origin">'
+)
+
+def page(slug, title, subtitle, blocks, desc, head_title=None):
+    """head_title: the browser-tab / search title when it should differ from
+    the page heading (N37a: the overview's heading is "SynaptoFit Legal", but
+    its title is "Legal — SynaptoFit", not the name twice)."""
+    url = f"{SITE}{BASE}/" if slug == "index" else f"{SITE}{BASE}/{slug}.html"
+    tab_title = f"{head_title or title} — SynaptoFit"
     tabs = ""
     for s, label in TABS:
         cur = ' aria-current="page"' if s == slug else ''
@@ -123,10 +139,21 @@ def page(slug, title, subtitle, blocks, desc):
 <html lang="en-GB">
 <head>
 <meta charset="utf-8">
+{HEAD_SECURITY}
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>{html.escape(title)} — SynaptoFit</title>
+<title>{html.escape(tab_title)}</title>
 <meta name="description" content="{html.escape(desc)}">
 <meta name="robots" content="index,follow">
+<link rel="canonical" href="{url}">
+<meta property="og:site_name" content="SynaptoFit">
+<meta property="og:locale" content="en_GB">
+<meta property="og:title" content="{html.escape(tab_title)}">
+<meta property="og:description" content="{html.escape(desc)}">
+<meta property="og:type" content="website">
+<meta property="og:url" content="{url}">
+<meta property="og:image" content="{SITE}/logo-512.png">
+<meta property="og:image:alt" content="The SynaptoFit logo">
+<meta name="twitter:card" content="summary">
 <link rel="icon" href="/logo.png">
 <meta name="theme-color" content="#0A0A0A">
 <style>{CSS}</style>
@@ -144,10 +171,10 @@ def page(slug, title, subtitle, blocks, desc):
 </div></main>
 <footer><div class="wrap">
 <div class="foot-grid">
-<div><h4>SynaptoFit</h4><p>Offline-first fitness tracking.</p><p>Built in the UK.</p></div>
-<div class="foot-links"><h4>Product</h4><a href="/#features">Features</a><a href="/#offline">How it works</a><a href="/#beta">Join the beta</a></div>
-<div class="foot-links"><h4>Legal</h4><a href="{BASE}/privacy.html">Privacy Policy</a><a href="{BASE}/terms.html">Terms of Service</a><a href="{BASE}/disclaimer.html">Health Disclaimer</a><a href="{BASE}/delete-account.html">Delete your account</a></div>
-<div class="foot-links"><h4>Contact</h4><a href="mailto:support@synaptofit.com">support@synaptofit.com</a><a href="mailto:privacy@synaptofit.com">privacy@synaptofit.com</a></div>
+<div><p class="foot-h">SynaptoFit</p><p>Offline-first fitness tracking.</p><p>Built in the UK.</p></div>
+<div class="foot-links"><p class="foot-h">Product</p><a href="/#features">Features</a><a href="/#offline">How it works</a><a href="/#beta">Join the beta</a></div>
+<div class="foot-links"><p class="foot-h">Legal</p><a href="{BASE}/privacy.html">Privacy Policy</a><a href="{BASE}/terms.html">Terms of Service</a><a href="{BASE}/disclaimer.html">Health Disclaimer</a><a href="{BASE}/delete-account.html">Delete your account</a></div>
+<div class="foot-links"><p class="foot-h">Contact</p><a href="mailto:support@synaptofit.com">support@synaptofit.com</a><a href="mailto:privacy@synaptofit.com">privacy@synaptofit.com</a></div>
 </div>
 <div class="fine">
 SynaptoFit is operated by {TRADER}, a sole trader based in the United Kingdom.<br>
@@ -408,7 +435,8 @@ if __name__ == "__main__":
     os.makedirs(out, exist_ok=True); os.chdir(out)
     print("writing to:", os.getcwd())
     page("index","SynaptoFit Legal", f"Version {VERSION} · Last updated {UPDATED}", INDEX,
-         "Privacy policy, terms of service and health disclaimer for the SynaptoFit fitness tracking app.")
+         "Privacy policy, terms of service and health disclaimer for the SynaptoFit fitness tracking app.",
+         head_title="Legal")
     page("privacy","Privacy Policy", f"Version {VERSION} · Last updated {UPDATED}", PRIVACY,
          "How SynaptoFit collects, uses and protects your health and fitness data under UK and EU GDPR.")
     page("terms","Terms of Service", f"Version {VERSION} · Last updated {UPDATED} · Includes End User Licence Agreement", TERMS,
