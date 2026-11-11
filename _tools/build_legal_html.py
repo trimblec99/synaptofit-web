@@ -216,6 +216,7 @@ PRIVACY = [
 ('table',[['Service','What they receive','Role / location'],
  ['Apple (App Store / TestFlight)',"Standard app distribution data under Apple's own policies; we receive no personal data from Apple beyond aggregate install/crash statistics",'Independent controller (global)'],
  ['Google (Google Play)',"Standard app distribution and crash diagnostics under Google's policies",'Independent controller (global)'],
+ ['Google (Google Groups — Android beta only)',"The email address you join our beta group with, if you join it to test on Android. As the group's owner we can see that address; we use it only to give you test access, nobody else in the group can see it, and you can leave the group at any time",'Independent controller (global)'],
  ['Open Food Facts / Search-a-licious','Your food search text or scanned barcode only — never your identity','Independent service (EU); open-data project'],
  ['IONOS','Email content if you write to our support or privacy addresses; hosting of this website','Processor (UK/EU)'],
  ['Server hosting','Your synced account and logged data','Currently operated directly by us on our own server in the United Kingdom — there is no third-party hosting company involved. If we move to a managed hosting provider, we will update this policy before the move.']]),

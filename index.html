@@ -95,6 +95,20 @@ h2{font-size:29px;margin:0 0 14px;letter-spacing:-.01em}
 .promise p{color:#cfcfcf;margin:0 0 12px}
 .promise p:last-child{margin-bottom:0}
 
+/* beta: one card per platform */
+.beta-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+@media(max-width:760px){.beta-grid{grid-template-columns:1fr}}
+.beta-card{background:var(--bg-2);border:1px solid var(--line);border-radius:12px;padding:26px 26px 24px;
+  display:flex;flex-direction:column}
+.beta-card h3{margin:0 0 4px;font-size:19px}
+.beta-card .where{color:var(--muted);font-size:13.5px;margin:0 0 16px}
+.beta-card ol{margin:0 0 20px;padding-left:20px;color:#cfcfcf;font-size:15px}
+.beta-card li{margin-bottom:10px}
+.beta-card li:last-child{margin-bottom:0}
+.beta-card .btns{display:flex;gap:10px;flex-wrap:wrap;margin-top:auto}
+.beta-card .note{color:var(--muted);font-size:13.2px;margin:14px 0 0;line-height:1.55}
+.beta-help{color:var(--muted);font-size:14.5px;margin:22px 0 0}
+
 /* legal cards */
 .legal-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
 @media(max-width:800px){.legal-grid{grid-template-columns:1fr}}
@@ -247,11 +261,40 @@ footer a:hover{color:var(--gold)}
 <section id="beta">
   <div class="wrap">
     <h2>Join the beta</h2>
-    <p class="section-intro">SynaptoFit is in active beta on iOS via TestFlight, with Android on the way. Testers get it free and their feedback genuinely shapes what gets built next — most of what's listed above came from tester requests.</p>
-    <div class="cta">
-      <a class="btn btn-primary" href="mailto:support@synaptofit.com?subject=SynaptoFit%20beta%20access">Request an invite</a>
-      <a class="btn btn-ghost" href="mailto:support@synaptofit.com">Ask a question</a>
+    <p class="section-intro">SynaptoFit is in beta on iPhone and Android. Testers get it free, and their feedback shapes what gets built next — most of what's listed above came from tester requests.</p>
+    <div class="beta-grid">
+
+      <div class="beta-card">
+        <h3>iPhone</h3>
+        <p class="where">Through Apple's TestFlight</p>
+        <ol>
+          <li>Get Apple's free <a href="https://apps.apple.com/app/testflight/id899247664" target="_blank" rel="noopener">TestFlight app</a> from the App Store.</li>
+          <li>On your iPhone, tap <strong>Join on TestFlight</strong> below.</li>
+          <li>Install SynaptoFit and create your account.</li>
+        </ol>
+        <div class="btns">
+          <a class="btn btn-primary" href="https://testflight.apple.com/join/MJ6BHpZq" target="_blank" rel="noopener">Join on TestFlight</a>
+        </div>
+        <p class="note">On a computer? Open this page on your iPhone.</p>
+      </div>
+
+      <div class="beta-card">
+        <h3>Android</h3>
+        <p class="where">Through Google Play · UK only for now</p>
+        <ol>
+          <li>Join the beta group, using the Google account you use on Google Play.</li>
+          <li>Open the test link and tap <strong>Become a tester</strong>.</li>
+          <li>Install SynaptoFit from Google Play and create your account.</li>
+        </ol>
+        <div class="btns">
+          <a class="btn btn-primary" href="https://groups.google.com/g/synaptofit-beta" target="_blank" rel="noopener">1. Join the beta group</a>
+          <a class="btn btn-ghost" href="https://play.google.com/apps/testing/com.synaptofit.app" target="_blank" rel="noopener">2. Open the test link</a>
+        </div>
+        <p class="note">If the test link says you can't join yet, wait a few minutes after joining the group and try again — Google can take a little while to catch up.</p>
+      </div>
+
     </div>
+    <p class="beta-help">Stuck, or have a question? <a href="mailto:support@synaptofit.com?subject=SynaptoFit%20beta">Email us</a>.</p>
   </div>
 </section>
 
