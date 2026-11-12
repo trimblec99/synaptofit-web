@@ -6,7 +6,7 @@ Re-run after editing CONTENT below; re-upload the changed files."""
 import re, html, os
 
 VERSION = "2.0"
-UPDATED = "11 November 2026"
+UPDATED = "12 November 2026"
 
 # Path the pages are served under. "" = site root, "/legal" = synaptofit.com/legal/...
 BASE = "/legal"
@@ -223,10 +223,10 @@ PRIVACY = [
        'Workout history you choose to import from another app (for example Strong, Hevy, FitNotes or Fitbod) or a spreadsheet. The file is read on your phone. Only the workouts in it are saved to your account, labelled with the app they came from so the import can be undone; the file itself is never uploaded']),
 ('h3','3.4 Technical data'),
 ('ul',['Authentication tokens to keep you signed in; basic server logs (e.g. request timestamps and IP addresses) generated in operating the service and used only for security and troubleshooting']),
-('p','We do **not** collect your precise location, contacts, advertising identifiers, or any data from other apps unless you choose to import it (section 3.3). The app requests camera and photo-library permission only for the barcode scanner and progress photos, and the accelerometer is used only to animate the on-screen water jug — motion data never leaves your device.'),
+('p','We do **not** collect your precise location, contacts, advertising identifiers, or any data from other apps unless you choose to import it (section 3.3). The app requests camera and photo-library permission only for the barcode scanner and progress photos (adding them, and saving them to a SynaptoFit album if you choose), and the accelerometer is used only to animate the on-screen water jug — motion data never leaves your device.'),
 ('h2','4. Special category (health) data and your explicit consent'),
 ('p','Most data listed in 3.2 and 3.3 is "data concerning health" under Article 9 GDPR. We process it on the basis of your **explicit consent** (Article 9(2)(a)), which we ask for in a dedicated, separate step during onboarding — not buried in the Terms of Service.'),
-('p','You may withdraw consent at any time in the app or by emailing privacy@synaptofit.com. Because the entire service consists of recording and analysing this data, withdrawing consent means we can no longer provide the service; you may then export your data (on request) and delete your account.'),
+('p','You may withdraw consent at any time in the app or by emailing privacy@synaptofit.com. Because the entire service consists of recording and analysing this data, withdrawing consent means we can no longer provide the service; you may first export a copy of your data in the app (**Profile → Import / export**) and then delete your account.'),
 ('h2','5. Why we process your data (purposes and lawful bases)'),
 ('table',[['Purpose','Data used','Lawful basis'],
  ['Creating and operating your account; syncing and restoring your logged data','Account data; all logged data','Contract (Art. 6(1)(b)); explicit consent for health data (Art. 9(2)(a))'],
@@ -240,7 +240,8 @@ PRIVACY = [
 ('p','We do **not** use your data for advertising, profiling for marketing, or automated decisions with legal or similarly significant effects. If future features (such as AI-generated plans or a paid subscription) need new processing, we will update this policy and ask for any additional consent **before** those features touch your data.'),
 ('h2','6. Where your data lives'),
 ('ul',['**On your device:** the app is offline-first. Your logs are stored in a local database on your phone and most screens are computed entirely on-device.',
-       '**On our server:** a copy of your account and logged data (including progress photos) syncs to a server located in the **United Kingdom**, so your data survives a lost or new phone. The server is accessible only over encrypted HTTPS connections and only to the operator.']),
+       '**On our server:** a copy of your account and logged data (including progress photos) syncs to a server located in the **United Kingdom**, so your data survives a lost or new phone. The server is accessible only over encrypted HTTPS connections and only to the operator.',
+       '**When you export:** the export file is made on your phone and saved only where you choose. A progress photo you save to your photos goes into a **SynaptoFit** album in your photo library (and is then backed up if your phone backs up your photos). We do not keep a copy of either or send it anywhere else.']),
 ('h2','7. Who else sees your data (recipients and processors)'),
 ('p','We never sell or rent personal data. The limited third parties involved in running SynaptoFit are:'),
 ('table',[['Service','What they receive','Role / location'],
@@ -267,11 +268,11 @@ PRIVACY = [
 ('p','No system is perfectly secure. If a breach occurs that risks your rights, we will notify the ICO and, where required, you, in line with our legal obligations.'),
 ('h2','11. Your rights'),
 ('p','Under the UK and EU GDPR you can, at any time:'),
-('ul',['**Access** a copy of your data',
+('ul',['**Access** a copy of your data (self-service: **Profile → Import / export → Export** gives you a copy of everything you have logged, including your progress photos)',
        '**Rectify** inaccurate data (largely self-service in the app)',
        '**Erase** your data (self-service: delete your account in the app)',
        '**Restrict** or **object to** processing',
-       '**Port** your data to another service in a machine-readable format',
+       '**Port** your data to another service in a machine-readable format (self-service: the same export, as CSV spreadsheet files)',
        '**Withdraw consent** at any time, without affecting prior processing']),
 ('p',"To exercise a right that isn't self-service in the app, email **privacy@synaptofit.com**. We respond within one month. You also have the right to complain to the **Information Commissioner's Office** ([[ico.org.uk|https://ico.org.uk]]) or, in the EU, your local supervisory authority."),
 ('h2','12. Children'),
@@ -392,6 +393,7 @@ DELETE_ACCOUNT = [
          "permanently erases your account and everything you have logged. It cannot be undone."]),
 ('h2','1. Delete it in the app (quickest)'),
 ('ul',['Open SynaptoFit and sign in.',
+       'Want a copy of your data first? Go to **Profile → Import / export → Export**.',
        'Go to **Profile → Delete account**.',
        'Confirm. Your account and data are deleted from our server straight away, and the app also clears your data from that phone.']),
 ('p','You need an internet connection for this, because the deletion happens on our server.'),
